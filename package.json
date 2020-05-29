@@ -1,6 +1,6 @@
 {
-  "name": "graphql-auth-directives",
-  "version": "2.2.0",
+  "name": "@nino-vrijman/graphql-auth-directives",
+  "version": "2.3.0",
   "description": "Add authorization to your GraphQL API using schema directives.",
   "main": "./dist/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grand-stack/graphql-auth-directives.git"
+    "url": "git+https://github.com/nino-vrijman/graphql-auth-directives.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
@@ -40,9 +40,9 @@
   "author": "William Lyon",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/grand-stack/graphql-auth-directives/issues"
+    "url": "https://github.com/nino-vrijman/graphql-auth-directives/issues"
   },
-  "homepage": "https://github.com/grand-stack/graphql-auth-directives#readme",
+  "homepage": "https://github.com/nino-vrijman/graphql-auth-directives#readme",
   "lint-staged": {
     "*.{js,json,css}": [
       "prettier --write",
