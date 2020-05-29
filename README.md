@@ -1,5 +1,7 @@
 # graphql-auth-directives
 
+This fork adds default field resolvers for your GraphQL fields, see [this related issue](https://github.com/grand-stack/graphql-auth-directives/issues/8).
+
 [![CircleCI](https://circleci.com/gh/grand-stack/graphql-auth-directives.svg?style=svg)](https://circleci.com/gh/grand-stack/graphql-auth-directives)
 
 Add authentication to your GraphQL API with schema directives.
@@ -18,9 +20,12 @@ npm install --save graphql-auth-directives
 
 Then import the schema directives you'd like to use and attach them during your GraphQL schema construction. For example using [neo4j-graphql.js' `makeAugmentedSchema`](https://grandstack.io/docs/neo4j-graphql-js-api.html#makeaugmentedschemaoptions-graphqlschema):
 
-
 ```js
-import { IsAuthenticatedDirective, HasRoleDirective, HasScopeDirective } from "graphql-auth-directives";
+import {
+  IsAuthenticatedDirective,
+  HasRoleDirective,
+  HasScopeDirective
+} from "graphql-auth-directives";
 
 const augmentedSchema = makeAugmentedSchema({
   typeDefs,
@@ -56,8 +61,8 @@ In the case that the token was decoded with no errors the `context.user` will st
 
 ```js
 me: (parent, args, context) => {
-      console.log(context.user.id);
-}
+  console.log(context.user.id);
+};
 ```
 
 A JWT must then be included in each GraphQL request in the Authorization header. For example, with Apollo Client:
@@ -100,7 +105,9 @@ If you would like the server to verify the tokens used in a request, you must pr
 ```sh
 export JWT_NO_VERIFY=true //Server does not have the secret, but will need to decode tokens
 ```
+
 or
+
 ```sh
 export JWT_SECRET=><YOUR_JWT_SECRET_KEY_HERE> //Server has the secret and will verify authenticity
 ```
@@ -125,23 +132,25 @@ export AUTH_DIRECTIVES_ROLE_KEY=https://grandstack.io/roles
 1. create ./test/helpers/.env
 2. add relevant values
 3. run the test server
+
 ```sh
 npx babel-node test/helpers/test-setup.js
 ```
+
 4. run the tests
+
 ```sh
 npx ava test/*.js
 ```
-
 
 ## Test JWTs
 
 Scopes: user:CRUD
 
-~~~
+```
 key: qwertyuiopasdfghjklzxcvbnm123456
-~~~
+```
 
-~~~
+```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHUkFORHN0YWNrIiwiaWF0IjoxNTQ5MTQ1Mjk0LCJleHAiOjE1ODA2ODEzMDcsImF1ZCI6ImdyYW5kc3RhY2suaW8iLCJzdWIiOiJib2JAbG9ibGF3LmNvbSIsIlJvbGUiOiJBRE1JTiIsIlNjb3BlIjpbIlVzZXI6UmVhZCIsIlVzZXI6Q3JlYXRlIiwiVXNlcjpVcGRhdGUiLCJVc2VyOkRlbGV0ZSJdfQ.nKADki8iKTpKqq3CVdrGAUrSzSBmFolWzYOsA_ULSdo
-~~~
+```
